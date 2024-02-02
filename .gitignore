@@ -1,0 +1,6 @@
+**/*.pdf
+node_modules/
+.DS_Store
+.env
+coverage/
+.dart_tool
