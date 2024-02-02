@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  db-container:
+    image: mysql
+    container_name: db
+    ports:
+      - "8012:3306"
+    volumes:
+      - ./chall-5.sql:/docker-entrypoint-initdb.d/chall.sql
+    environment:
+      MYSQL_USER: nonroot
+      MYSQL_PASSWORD: nonroot
+      MYSQL_ROOT_PASSWORD: nonroot
+      MYSQL_DATABASE: venatronics
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-P", "8012"]
+      timeout: 120s
+      retries: 10
+    networks:
+      - mynet
+
+networks:
+  mynet:
+    driver: bridge
