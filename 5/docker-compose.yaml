@@ -3,7 +3,7 @@ version: "3.9"
 services:
   db-container:
     image: mysql
-    container_name: db
+    container_name: db-chall
     ports:
       - "8012:3306"
     volumes:
